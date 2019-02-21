@@ -1,0 +1,65 @@
+
+<section id="showcase" class="d-flex justify-content-center align-items-center">
+  <div id="overlay"></div>
+  <div id="header" class="container text-white text-center custom-margin-top-8" style="margin-top: 2px;">
+    <h3 *ngIf="!isCartEmpty">Here are your selected experiences: </h3>
+    <h3 *ngIf="isCartEmpty">Your cart is empty!</h3>
+
+    <div class="row">
+      <div class="col-md-6 p-3" *ngFor="let myCart of myCartItems; let i = index;">
+        <div class="card bg-dark border-0">
+          <img src="{{ myCart.imagePath }}" class="card-img-top" alt="{{ myCart.experiencesName }}">
+          <div class="card-body ">
+            <h5 class="card-title text-primary">{{ myCart.experiencesName }}</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non possimus ducimus aperiam
+              natus dignissimos maxime? Totam amet enim nesciunt laborum.</p>
+            <button class="btn btn-outline-primary btn-lg" type="button" (click)="onAddExperience('snowHiking')">Remove
+              from Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg mt-3 mb-3" *ngIf="!isCartEmpty" routerLink="/confirmed">Confirm Booking</button>
+  </div>
+</section>
+
+
+<section id="newsletter" class="bg-dark">
+  <div class="container text-center text-white py-5">
+    <p class="lead">JOIN OUR NEWSLETTER FOR DEALS AND UPDATES AND OFFERS</p>
+    <div class="row justify-content-center">
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+        <form action="" class="form-inline">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Your Email">
+            <div class="input-group-append">
+              <button class="btn btn-primary">Join Now</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="footer" class="bg-secondary p-3">
+  <ul class="nav text-center justify-content-center flex-column flex-sm-row">
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#">FAQ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#explore">EXPERIENCE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#explore">EXPLORE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#newsletter">CONTACT</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#bookingModal">BOOK NOW</a>
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,72 @@
+<button id="bookNowBtn" class="btn btn-primary btn-lg px-5" (click)="openRegistration(bookingModal)">BOOK NOW</button>
+
+
+<ng-template #bookingModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">New Booking</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Please fill out the form below and explore the adventures</p>
+    <form (ngSubmit)="onSignup(signupForm)" #signupForm="ngForm">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" ngModel id="email" name="email" placeholder="example@example.com">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" ngModel id="password" [minLength]="6" class="form-control">
+        </div>
+
+        <br>
+
+        <p *ngIf="!isSignupSuccessful"><span style="color: red;font-weight: bold;">*</span>Already have an account ? Then please <a href="#" (click)="openSignIn(signInModal)">Sign In</a> here</p>
+
+        <div class="alert alert-success" role="alert" *ngIf="isSignupSuccessful">
+          Signup successful please click here to <a href="#" (click)="openSignIn(signInModal)">Sign In</a>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Register</button>
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+        </div>
+
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #signInModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Sign In</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSignIn(signInForm)" #signInForm="ngForm">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" name="email" id="email" ngModel placeholder="example@example.com">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" ngModel [minLength]="6" class="form-control">
+        </div>
+
+        <br>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+        </div>
+
+    </form>
+  </div>
+</ng-template>
+
+
+
